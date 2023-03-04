@@ -1,0 +1,32 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "_moduleAliases": {
+    "@root": ".",
+    "@models": "app/models",
+    "@controllers": "app/controllers",
+    "@routes": "app/routes",
+    "@services": "app/services",
+    "@database": "database",
+    "@validators": "app/validators"
+  },
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "jalali-moment": "^3.3.11",
+    "module-alias": "^2.2.2",
+    "mysql2": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
