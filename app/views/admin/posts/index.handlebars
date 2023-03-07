@@ -28,7 +28,7 @@
                         <tbody>
                         {{#each posts}}
                             <tr>
-                                <td>1</td>
+                                <td>{{this.id}}</td>
                                 <td>
                                     <a href="#">{{this.title}}</a>
                                 </td>
@@ -36,10 +36,10 @@
                                 <td>{{this.jalali_created_at}}</td>
                                 <td>{{this.persian_views}}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="/admin/posts/edit/{{this.id}}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="/admin/posts/delete/{{this.id}}">
                                         <i class="fa fa-remove"></i>
                                     </a>
                                 </td>
