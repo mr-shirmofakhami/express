@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 //routers
-const postRouter = require('./posts');
 const dashboardController = require('./dashboard');
+const postsRouter = require('./posts');
+const commentsRouter = require('./comments');
+
 
 router.use('/dashboard', dashboardController);
-router.use('/posts', postRouter);
+router.use('/posts', postsRouter);
+router.use('/comments', commentsRouter);
 module.exports = router;
