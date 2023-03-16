@@ -5,44 +5,50 @@
                 <h4 class="title">دیدگاه ها</h4>
             </div>
             <div class="box-body">
-                <div class="table">
+                <table class="table">
                     <thead class="thead-dark">
-                        <tr>
-                            <th>نویسنده</th>
-                            <th>دیدگاه</th>
-                            <th>در پاسخ به</th>
-                            <th>ارسال شده</th>
-                        </tr>
+                    <tr>
+                        <th>نویسنده</th>
+                        <th>دیدگاه</th>
+                        <th>در پاسخ به</th>
+                        <th>ارسال شده</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr class="comment-row">
+                    {{#each comments}}
+                        <tr class="comment-row {{commentBackground this.status}}">
                             <td>
                                 <div class="commenter">
                                     <div class="avatar mr-10 mt-10">
-                                        <img src="public/assets/images/avatar/avatar-1.jpg" alt="">
+                                        <img src="{{this.userAvatar}}" alt="">
                                     </div>
                                     <div class="name mr-10 mt-10">
-                                        کیوان علی محمدی
+                                        {{this.user_name}}
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="comment">
-                                    مطلب خوبی بود
+                                    {{this.comments}}
                                 </div>
                                 <div class="comment-operations mt-10">
-                                    <a class="button button-xs button-success"><span>تایید</span></a>
-                                    <a class="button button-xs button-warning"><span>رد</span></a>
-                                    <a class="button button-xs button-danger"><span>حذف</span></a>
+                                    <a href="/admin/comments/approve/{{this.id}}"
+                                       class="button button-xs button-success"><span>تایید</span></a>
+                                    <a href="/admin/comments/reject/{{this.id}}"
+                                       class="button button-xs button-warning"><span>رد</span></a>
+                                    <a href="/admin/comments/delete/{{this.id}}"
+                                       class="button button-xs button-danger"><span>حذف</span></a>
                                 </div>
                             </td>
                             <td>
-                                <a href="#">آموزش بلاگ در</a>
+                                <a href="#">{{this.title}}</a>
                             </td>
-                            <td>1401/12/15</td>
+                            <td>{{this.jalali_created_at}}</td>
                         </tr>
+                    {{/each}}
+
                     </tbody>
-                </div>
+                </table>
             </div>
         </div>
     </div>

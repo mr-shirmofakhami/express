@@ -1,9 +1,10 @@
-const postModel = require('@models/posts');
+const postModel = require('@models/post/index');
 const userModel = require('@models/user');
 const dateService = require('@services/dateService');
 const langService = require('@services/langService');
 const {lang} = require("jalali-moment");
 const postValidator = require('@validators/post');
+const {statuses} = require('@models/post/postStatus');
 exports.index = async (req, res) => {
     const posts = await postModel.findAll();
     const presentedPosts = posts.map(post => {
@@ -55,9 +56,15 @@ exports.edit = async (req, res) => {
     }
     const post = await postModel.find(postID);
     const users = await userModel.findAll(['id','full_name']);
-    res.render('admin/posts/edit', {layout: 'admin', users, post});
+    res.render('admin/posts/edit', {layout: 'admin', users, post, postStatus: statuses(), helpers: {
+        isPostAuthor: function (userId, options) {
+            return post.author_id === userId ? options.fn(this) : options.inverse(this);
+        },
+        isSelectedStatus: function (status, options) {
+            return post.status === status ? options.fn(this) : options.inverse(this);
+        }
+        }});
 };
-
 exports.update = async (req, res) => {
     const postID = req.params.postID;
     if(parseInt(postID) === 0) {
