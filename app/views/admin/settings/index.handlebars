@@ -5,17 +5,20 @@
                 <h4 class="title">تنظیمات</h4>
             </div>
             <div class="box-bdy">
+                <form action="/admin/settings" method="POST">
                 <div class="row mbn-20">
 
-                    <!--Form Field-->
                     <div class="col-lg-4 col-12 mb-20">
                         <div class="mb-15">عمومی</div>
                         <div class="row mbn-15">
                             <div class="col-12 mb-30">
-                                <input type="text" name="website-title" class="form-control" placeholder="عنوان وبسایت">
+                                <input type="text" name="website_title" class="form-control" placeholder="عنوان وبسایت"
+                                value="{{config.website_title}}">
                             </div>
                             <div class="col-12 mb-30">
-                                <textarea name="website-description" class="form-control" placeholder="توضیحات وبسایت"></textarea>
+                                <textarea name="website_description" class="form-control" placeholder="توضیحات وبسایت">
+                                    {{config.website_description}}
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -25,11 +28,11 @@
                          <div class="mb-15">محتوا</div>
                          <div class="row mbn-15">
                              <div class="col-12 mb-30">
-                                 <input type="text" name="post_per_page" class="form-control" placeholder="تعداد مطالب هر صفحه" value="10">
+                                 <input type="number" name="posts_per_page" class="form-control" placeholder="تعداد مطالب هر صفحه" value="{{config.posts_per_page}}">
                              </div>
                             <div class="col-12 mb-30">
                                  <label class="adomx-checkbox">
-                                     <input type="checkbox" checked="checked"><i class="icon"></i>کاربران می توانند دیدگاه ثبت کنند
+                                     <input name="users_can_submit_comment" type="checkbox" {{#isChecked config.users_can_submit_comment}}checked{{/isChecked}}><i class="icon"></i>کاربران می توانند دیدگاه ثبت کنند
                                  </label>
                             </div>
                         </div>
@@ -39,19 +42,24 @@
                     <div class="col-lg-4 col-12 mb-20">
                         <div class="mb-15">عضویت</div>
                         <div class="row mbn-15">
-                            <div class="col-12 mb-30">
-                                <input type="text" class="form-control" placeholder="محتوای هر صفحه" value="10">
-                            </div>
+<!--                            <div class="col-12 mb-30">-->
+<!--                                <input type="text" class="form-control" placeholder="محتوای هر صفحه" value="10">-->
+<!--                            </div>-->
                             <div class="col-12 mb-30">
                                 <label class="adomx-checkbox">
-                                    <input type="checkbox" checked="checked"><i class="icon"></i>هرکس می تواند ثبت نام کند
+                                    <input name="users_can_register" type="checkbox" {{#isChecked config.users_can_register}}checked{{/isChecked}}><i class="icon"></i>هرکس می تواند ثبت نام کند
                                 </label>
                             </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-12 mb-30">
+                            <button type="submit" class="button button-primary"><span>ذخیره سازی</span></button>
+                        </div>
+                    </div>
                     <!--Form Field-->
                 </div>
+                </form>
             </div>
         </div>
     </div>

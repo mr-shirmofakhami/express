@@ -16,6 +16,7 @@ module.exports = app => {
         saveUninitialized: true,
         cookie: { maxAge: 60000 }
     }));
+    app.use(flash());
     app.engine('handlebars', hbs.engine({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars');
     app.set('views', path.join(__dirname, '../views'));

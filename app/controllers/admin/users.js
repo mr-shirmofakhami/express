@@ -22,7 +22,7 @@ exports.store = async (req, res) => {
 
     const insertId = await userModel.create(userData);
     if(insertId){
-        // req.flash('success', 'کاربر جدید با موفقیت ایجاد شد');
+        req.flash('success', 'کاربر جدید با موفقیت ایجاد شد');
         res.redirect('/admin/users');
     }
 };
